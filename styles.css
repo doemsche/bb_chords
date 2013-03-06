@@ -1,0 +1,23 @@
+.chord-list{
+	list-style:none;
+
+}
+
+.chord-list li{
+	cursor:pointer;
+	float:left;
+	margin-right:20px;
+}
+
+#footer{
+	padding:0;
+	height:150px;
+}
+
+.note{
+	cursor:pointer;
+}
+
+.debug-red{
+	background-color:red;
+}
