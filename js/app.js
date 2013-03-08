@@ -19,5 +19,8 @@ $(function() {
 
     //new app.NoteView( notes );
 	
+    $('#ls-reset').click(function(){
+        localStorage.clear();
+    });
 
 });

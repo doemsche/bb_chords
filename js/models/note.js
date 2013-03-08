@@ -9,11 +9,13 @@
 
   app.Note = Backbone.Model.extend({
     name: "Model:Note",
+    static_data: ['c','cis','d','dis','e','f','g','gis','a','h', 'c'],
     // Default attributes ensure that each todo created has `title` and `completed` keys.
     defaults: {
       name: '',
       value: '',
-      active: false
+      active: false,
+      semanticValue: 'not defined x'
     },
 
     initialize: function(){

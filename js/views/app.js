@@ -16,7 +16,8 @@
 
     // Delegated events for creating new items, and clearing completed ones.
     events: {
-      'click #submit-new-chord': 'createOnsubmit'
+      'click #submit-new-chord': 'createOnsubmit',
+      'click #populate' : 'populate'
     },
 
     // At initialization we bind to the relevant events on the `Todos`
@@ -25,8 +26,7 @@
     initialize: function() {
       console.log(this.name+".init");
       this.$name = this.$('#chord-name');
-      this.$input = this.$('#chord-data');
-      
+      this.$chordData = this.$('#chord-data');
       this.$main = this.$('#main');
       this.$footer = this.$('#footer');
 
@@ -63,10 +63,13 @@
 
     // Add all items in the **Todos** collection at once.
     addAll: function() {
+
       console.log(this.name+".addAll");
       this.$('#chord-list').html('');
       app.Chords.each(this.addOne, this);
-      app.Notes.each(this.addNotes, this)
+      app.Notes.each(this.addNotes, this);
+      //reset Notes Collection
+      app.Notes.reset();
     },
 
     addNotes: function(note){
@@ -83,19 +86,37 @@
     },
 
     // Generate the attributes for a new Todo item.
-    newAttributes: function() {
-      console.log(this.name+".newAttributes");
-      return {
-        name: this.$name.val().trim(),
-        data: this.$input.val().trim()
-      };
+    createNewChord: function(collection) {
+      console.log(this.name+".createNewChord");
+      var arr = [];
+      collection.each(function(item) {
+        arr.push(item.static_data[item.get('value')])
+      });
+      console.log(arr);
+      return arr;
     }, 
 
     // If you hit return in the main input field, create new **Todo** model,
     // persisting it to *localStorage*.
     createOnsubmit: function( e ) {
       console.log(this.name+".¨createOnSubmit");
-      app.Chords.create( this.newAttributes() );   
+      var chordName = $('#chord-name').val();
+      app.Chords.create( { name: chordName, data: this.createNewChord( app.Notes ) } );
+      /*app.Notes.each(function(item){
+        item.model.set('active', false);
+        item.view.$el.removeClass('debug-red');
+      })*/
+      app.Notes.reset();
+    },
+
+    populate: function(){
+
+      app.Notes.create({name:"E", value:5});
+      app.Notes.create({name:"B", value:4});
+      app.Notes.create({name:"G", value:3});
+      app.Notes.create({name:"D", value:2});
+      app.Notes.create({name:"A", value:1});
+      app.Notes.create({name:"E", value:0});
 
     }
 

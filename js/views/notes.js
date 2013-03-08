@@ -16,7 +16,7 @@
 
     // The DOM events specific to an item.
     events: {
-      'click .note': 'highlight',
+      'click .note': 'highlight'
     },
 
     // The TodoView listens for changes to its model, re-rendering. Since there's
@@ -34,16 +34,16 @@
       return this;
     },
 
-    highlight: function(){
-      var state = this.model.get('active')
-      //state = (condition) ? true-value : false-value;
-      if( state ){
-        this.model.set('active', false);
-      } else {
-        this.model.set('active', true);
+    highlight: function(chordnote){
+      var state = this.model.get('active');
+      if(state){
+          this.model.set('active', false);
+          app.Notes.remove(this.model);
       }
-      console.log(this.model.get('value'))
-      $('#chord-data').val( this.model.get('value') )
+      else {
+          this.model.set('active', true);
+          app.Notes.add(this.model);
+      }
       this.$el.toggleClass('debug-red');
     }
   });
