@@ -17,6 +17,9 @@
     },
 
     initialize: function(){
+      console.log(this.name+ "init")
+      console.log(this.get("fret"))
+      console.log(this.static_data[this.get("fret") % 12])
       /*this.on('change:active', function(){
         //console.log('active value for this model has changed.');
       })*/

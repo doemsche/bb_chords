@@ -85,7 +85,7 @@
       // console.log(this.name+".createNewChord");
       var arr = [];
       collection.each(function(item) {
-        var idx = parseInt(item.get('value'),10) % 12;
+        var idx = parseInt(item.get('fret'),10) % 12;
         //console.log(idx)     
         arr.push(item.static_data[idx]);
       });
@@ -98,7 +98,9 @@
     createOnsubmit: function( e ) {
       // console.log(this.name+".¨createOnSubmit");
       var chordName = $('#chord-name').val();
+
       app.Chords.create( { name: chordName, data: this.createNewChord( app.Notes ) } );
+
       app.Notes.each(function(item) {
           item.set("active", false)// instanceof app.Notes
       });

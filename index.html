@@ -16,19 +16,21 @@
 	<div id="wrapper">
 		<section id="chordapp">
 			<header id="header">
-				<button class="btn" type="button" id="populate">Populate</button>
+				<button class="btn" type="button" id="reset-notes">reset</button>
 				<button class="btn" type="button" id="ls-reset">Reset Localstorage</button> 
 				<br/>
 			</header>
-			<section id="main">
-				
-
-				<ul class="gstring-ul" id="static-notes-0"></ul>	
-				<ul class="gstring-ul" id="static-notes-1"></ul>	
-				
+			<section id="main">			
+				<div id="fretboard">	
+						<ul class="gstring-ul" id="static-notes-e-high-string"></ul>
+						<ul class="gstring-ul" id="static-notes-b-string"></ul>
+						<ul class="gstring-ul" id="static-notes-g-string"></ul>		
+						<ul class="gstring-ul" id="static-notes-d-string"></ul>	
+						<ul class="gstring-ul" id="static-notes-a-string"></ul>	
+						<ul class="gstring-ul" id="static-notes-e-string"></ul>	
+				</div>	
+				<br/>				
 				<input id="chord-name" value="" />
-
-
 				<div id="chord-data" style=""></div>
 				
 				<button type="button" id="submit-new-chord">submit</button> 

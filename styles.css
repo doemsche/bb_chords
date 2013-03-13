@@ -25,7 +25,8 @@
 
 
 #wrapper{
-	margin-left:45%;
+	margin-left:10%;
+	width:100%;
 }
 
 ul#static-notes li{
@@ -44,12 +45,33 @@ ul#static-notes li{
 }
 
 .gstring-ul{
-	display:block;
-	padding:10px;
+	padding:5px;
+	margin: 0 0 0 0;
+	padding-left:0;
 }
 
+.static-note-instance a{
+	display:block;
+	text-align:center;
+	height:5px;
+}
 .static-note-instance{
 	list-style:none;
-	padding-left:10px;
 	float:left;
+	width:10px;
+	border: 1px dotted #999;
+	cursor: pointer;
+	width:20px;
+	border:none;
 }
+
+.hide-note-text{
+	display:none;
+}
+
+#fretboard{
+	overflow:hidden;
+	background: url('grid_bg.png');
+}
+
+
