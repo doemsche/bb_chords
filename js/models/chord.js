@@ -15,11 +15,17 @@
       data: ''
     },
 
+    validate: function (attrs) {
+        if (attrs.data.length == 0) {
+            return 'Please fill email field.';
+        }
+    },
+
     initialize: function(){
-      console.log(this.name+".init");
+      // console.log(this.name+".init");
     },
     remove: function(){
-      console.log(this.name+".remove");
+      // console.log(this.name+".remove");
     }
 
   });

@@ -16,7 +16,7 @@
     localStorage: new Backbone.LocalStorage('chords-backbone'),
 
     initialize: function(){
-      console.log(this.name+".init");
+      // console.log(this.name+".init");
     }
 
   });

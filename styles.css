@@ -26,3 +26,18 @@
 #wrapper{
 	margin-left:45%;
 }
+
+ul#static-notes li{
+	float:left;
+	list-style: none;
+}
+
+.clear-left{
+	clear:left;
+}
+
+.chord{
+	background: url('grid-small.png');
+	width: 72px;
+	height: 56px;
+}

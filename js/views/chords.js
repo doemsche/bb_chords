@@ -23,13 +23,13 @@
     // a one-to-one correspondence between a **Todo** and a **TodoView** in this
     // app, we set a direct reference on the model for convenience.
     initialize: function() {
-      console.log( this.name +".init" );
+      // console.log( this.name +".init" );
       this.listenTo(this.model, 'change', this.render);
     },
 
     // Re-renders the titles of the todo item.
     render: function() {
-      console.log( this.name+".render" );
+      // console.log( this.name+".render" );
       this.$el.html( this.template( this.model.toJSON() ) );
       return this;
     }

@@ -23,27 +23,34 @@
     // a one-to-one correspondence between a **Todo** and a **TodoView** in this
     // app, we set a direct reference on the model for convenience.
     initialize: function() {
-      console.log( this.name +".init" );
+      // console.log( this.name +".init" );
       this.listenTo(this.model, 'change', this.render);
     },
 
     // Re-renders the titles of the todo item.
-    render: function() {
-      console.log( this.name+".render" );
+    render: function(x) {
       this.$el.html( this.template( this.model.toJSON() ) );
       return this;
     },
 
     highlight: function(chordnote){
       var state = this.model.get('active');
+      // console.log("STATE IS: "+ state);
       if(state){
+          // console.log("***************** removed note to...");
           this.model.set('active', false);
           app.Notes.remove(this.model);
       }
       else {
+          // console.log("################# added note to...");
           this.model.set('active', true);
           app.Notes.add(this.model);
       }
       this.$el.toggleClass('debug-red');
+    },
+
+    remHighlight: function(){
+      this.$el.removeClass('debug-red');
     }
+
   });

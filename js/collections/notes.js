@@ -14,7 +14,7 @@
     localStorage: new Backbone.LocalStorage('notes-backbone'),
 
     initialize: function(){
-      console.log(this.name+'.init');
+      // console.log(this.name+'.init');
     }
 
   });
