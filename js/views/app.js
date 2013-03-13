@@ -16,8 +16,7 @@
 
     // Delegated events for creating new items, and clearing completed ones.
     events: {
-      'click #submit-new-chord': 'createOnsubmit',
-      'click #populate' : 'populate'
+      'click #submit-new-chord': 'createOnsubmit'
     },
 
     // At initialization we bind to the relevant events on the `Todos`
@@ -68,15 +67,10 @@
       // console.log(this.name+".addAll");
       this.$('#chord-list').html('');
       app.Chords.each(this.addOne, this);
-      app.Notes.each(this.addNote, this);
       //reset Notes Collection
       //app.Notes.reset();
     },
 
-    addNote: function(note){
-      var view = new app.NoteView({model:note});
-      $('#static-notes').append( view.render().el );
-    },
 
     filterOne : function (chord) {
       todo.trigger('visible');
@@ -91,9 +85,6 @@
       // console.log(this.name+".createNewChord");
       var arr = [];
       collection.each(function(item) {
-        console.log("here weg go")
-        var tmp = parseInt(item.get('value')) % 12;
-        console.log(item.static_data[tmp])
         var idx = parseInt(item.get('value'),10) % 12;
         //console.log(idx)     
         arr.push(item.static_data[idx]);
@@ -114,7 +105,7 @@
       app.Notes.reset();
       $('#static-notes').children().removeClass('debug-red');
     },
-
+    /*
     populate: function(){
       //fret zero
       app.Notes.remove();
@@ -145,8 +136,8 @@
       app.Notes.create({name:"Dis", value:2});
       app.Notes.create({name:"Ais", value:1});
       app.Notes.create({name:"F", value:0});
-      */
+      
       window.location.reload();
-    }
+    }*/
 
   });

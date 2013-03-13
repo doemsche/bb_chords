@@ -13,15 +13,13 @@
 
     // Default attributes ensure that each todo created has `title` and `completed` keys.
     defaults: {
-      value: '',
-      active: false,
-      semanticValue: 'not defined x'
+      
     },
 
     initialize: function(){
-      this.on('change:active', function(){
+      /*this.on('change:active', function(){
         //console.log('active value for this model has changed.');
-      })
+      })*/
     }
 
   });
