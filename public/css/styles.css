@@ -1,4 +1,8 @@
 
+
+#main{
+	border:none;
+}
 .chord-list{
 	list-style:none;
 
@@ -45,9 +49,9 @@ ul#static-notes li{
 }
 
 .gstring-ul{
-	padding:5px;
+	padding:0;
 	margin: 0 0 0 0;
-	padding-left:0;
+
 }
 
 .static-note-instance a{
@@ -71,7 +75,7 @@ ul#static-notes li{
 
 #fretboard{
 	overflow:hidden;
-	background: url('grid_bg.png');
-}
+/*	background: url('grid_bg.png');
+*/}
 
 

@@ -1,0 +1,24 @@
+%section#chordapp
+	%header#header
+		%button#reset-notes.btn{"type" => "button"} reset
+		%button#ls-reset.btn{"type" => "button"} reset localstorage
+	%section#main
+		%div#fretboard
+			%ul#static-notes-e-high-string.gstring-ul
+			%ul#static-notes-b-string.gstring-ul
+			%ul#static-notes-g-string.gstring-ul
+			%ul#static-notes-d-string.gstring-ul
+			%ul#static-notes-a-string.gstring-ul
+			%ul#static-notes-e-string.gstring-ul
+		%input#chord-name
+		%div#chord-data
+		%button#submit-new-chord{"type" => "button"}submit
+	%footer#footer
+		%ul#chord-list.chord-list
+	
+	%script#chord-template{"type" => "text/template"}
+		%div.chord	
+			%span <%= data %>
+
+	%script#note-template{"type" => "text/template"}
+		%span.note <%= value %>
