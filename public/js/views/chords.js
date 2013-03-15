@@ -7,6 +7,7 @@
 
   // The DOM element for a todo item...
   app.ChordView = Backbone.View.extend({
+
     name: 'View:Chord',
     //... is a list tag.
     tagName: 'li',

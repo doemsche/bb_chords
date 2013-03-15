@@ -11,9 +11,7 @@
     name: 'Collection:ChordsList',
     // Reference to this collection's model.
     model: app.Chord,
-
-    // Save all of the todo items under the `"todos"` namespace.
-    localStorage: new Backbone.LocalStorage('chords-backbone'),
+    url: '/api/chords',
 
     initialize: function(){
       // console.log(this.name+".init");

@@ -52,7 +52,12 @@ $(function() {
     	var gString = $(this).parent().attr('id').substring(13);
         var fret = $(this).attr('id');
         app.Notes.add({gString: gString, fret:fret});
-    })
+    });
+
+    $('.chord').popover({html:"dominik"})
+
+    $('.dropdown-toggle').dropdown();
+
 
 
 });

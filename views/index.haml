@@ -1,8 +1,13 @@
 %section#chordapp
 	%header#header
-		%button#reset-notes.btn{"type" => "button"} reset
-		%button#ls-reset.btn{"type" => "button"} reset localstorage
+		
+	%div#debug.btn-group
+		%button#reset-notes.btn Reset Notes
+		%button#ls-reset.btn Reset LocalStoare
+	
 	%section#main
+		%h5#chordnamelabel Chord Name
+		%input#chord-name{"type" => "text", "placeholder" => "Type Chord Name"}
 		%div#fretboard
 			%ul#static-notes-e-high-string.gstring-ul
 			%ul#static-notes-b-string.gstring-ul
@@ -10,14 +15,14 @@
 			%ul#static-notes-d-string.gstring-ul
 			%ul#static-notes-a-string.gstring-ul
 			%ul#static-notes-e-string.gstring-ul
-		%input#chord-name
 		%div#chord-data
-		%button#submit-new-chord{"type" => "button"}submit
+		%button#submit-new-chord.btn.btn-inverse{"type" => "button"}submit
 	%footer#footer
 		%ul#chord-list.chord-list
 	
 	%script#chord-template{"type" => "text/template"}
-		%div.chord	
+
+		%div.chord{"data-toggle" => "popover", "data-placement"=> "bottom", "data-content"=> "dominik is"}	
 			%span <%= data %>
 
 	%script#note-template{"type" => "text/template"}

@@ -2,10 +2,16 @@
 
 #main{
 	border:none;
+	width:800px;
 }
 .chord-list{
 	list-style:none;
+	margin-left:0;
+	margin-top:30px;
+}
 
+#debug{
+	float:right;
 }
 
 .chord-list li{
@@ -58,6 +64,7 @@ ul#static-notes li{
 	display:block;
 	text-align:center;
 	height:5px;
+
 }
 .static-note-instance{
 	list-style:none;
@@ -67,7 +74,8 @@ ul#static-notes li{
 	cursor: pointer;
 	width:20px;
 	border:none;
-}
+/*	border: 1px dotted red;
+*/}
 
 .hide-note-text{
 	display:none;
@@ -75,7 +83,9 @@ ul#static-notes li{
 
 #fretboard{
 	overflow:hidden;
-/*	background: url('grid_bg.png');
-*/}
-
+	padding: 10px 0;
+	width:500px;
+	background: url('grid_bg.png') no-repeat;
+	height:50px;
+}
 

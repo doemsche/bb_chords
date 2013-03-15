@@ -98,6 +98,7 @@
     createOnsubmit: function( e ) {
       // console.log(this.name+".¨createOnSubmit");
       var chordName = $('#chord-name').val();
+      $('#chord-name').val('');
 
       app.Chords.create( { name: chordName, data: this.createNewChord( app.Notes ) } );
 
@@ -106,40 +107,5 @@
       });
       app.Notes.reset();
       $('#static-notes').children().removeClass('debug-red');
-    },
-    /*
-    populate: function(){
-      //fret zero
-      app.Notes.remove();
-      
-      //G String
-      for(i = 0; i < 13; i++){
-          app.Notes.create({value:i, active:false});
-      }
-      //D String
-      for(i = 0; i < 13; i++){
-          app.Notes.create({value:i, active:false});
-      }
-      //A String
-      for(i = 0; i < 13; i++){
-          app.Notes.create({value:i, active:false});
-      }
-      //E String
-      for(i = 0; i < 13; i++){
-          app.Notes.create({value:i, active:false});
-      }
-
-
-
-      /*fret one
-      app.Notes.create({name:"F", value:5});
-      app.Notes.create({name:"C", value:4});
-      app.Notes.create({name:"Gis", value:3});
-      app.Notes.create({name:"Dis", value:2});
-      app.Notes.create({name:"Ais", value:1});
-      app.Notes.create({name:"F", value:0});
-      
-      window.location.reload();
-    }*/
-
+    }
   });
