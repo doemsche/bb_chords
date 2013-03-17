@@ -30,8 +30,7 @@
 
     // Re-renders the titles of the todo item.
     render: function() {
-       console.log( this.name+".render" );
-       console.log(this.model.toJSON())
+       //console.log( this.name+".render" );
       this.$el.html( this.template( this.model.toJSON() ) );
       return this;
     }

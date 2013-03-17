@@ -14,8 +14,14 @@
     localStorage: new Backbone.LocalStorage('notes-backbone'),
 
     initialize: function(){
-      // console.log(this.name+'.init');
-    }
+       console.log(this.name+'.init');
+    },
+
+    returnActive: function() {
+      return this.filter(function( note ) {
+        return note.get('active');
+      });
+    },
 
   });
 

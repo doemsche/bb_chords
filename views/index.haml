@@ -1,10 +1,8 @@
 %section#chordapp
-	%header#header
-		
+	%header#header	
 	%div#debug.btn-group
 		%button#reset-notes.btn Reset Notes
-		%button#ls-reset.btn Reset LocalStoare
-	
+		%button#ls-reset.btn Reset LocalStoare	
 	%section#main
 		%h5#chordnamelabel Chord Name
 		%input#chord-name{"type" => "text", "placeholder" => "Type Chord Name"}
@@ -19,11 +17,13 @@
 		%button#submit-new-chord.btn.btn-inverse{"type" => "button"}submit
 	%footer#footer
 		%ul#chord-list.chord-list
-	
 	%script#chord-template{"type" => "text/template"}
-
 		%div.chord{"data-toggle" => "popover", "data-placement"=> "bottom", "data-content"=> "dominik is"}	
-			%span <%= data %>
-
+			%span <%= name %> <%= data %>
+			
 	%script#note-template{"type" => "text/template"}
-		%span.note <%= value %>
+		%a
+			%span.hide-note-text <%= noteValue %>
+
+
+

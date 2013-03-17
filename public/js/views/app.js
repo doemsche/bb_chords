@@ -4,26 +4,20 @@
 
   // The Application
   // ---------------
-
+  
   // Our overall **AppView** is the top-level piece of UI.
   app.AppView = Backbone.View.extend({
 
     name: "View:AppView",
-    // Instead of generating a new element, bind to the existing skeleton of
-    // the App already present in the HTML.
     el: '#chordapp',
-
-
-    // Delegated events for creating new items, and clearing completed ones.
+    static_data: ['e','f','f#','g','g#','a', 'bb','b','c','c#','d','d#','e','f','f#','g','g#','a', 'bb','b','c','c#','d','d#',
+               'e','f','f#','g','g#','a', 'bb','b','c','c#','d','d#','e','f','f#','g','g#','a', 'bb','b','c','c#','d','d#'],
     events: {
       'click #submit-new-chord': 'createOnsubmit'
     },
 
-    // At initialization we bind to the relevant events on the `Todos`
-    // collection, when items are added or changed. Kick things off by
-    // loading any preexisting todos that might be saved in *localStorage*.
     initialize: function() {
-      // console.log(this.name+".init");
+      console.log(this.name+".init");
       this.$name = this.$('#chord-name');
       this.$chordData = this.$('#chord-data');
       this.$main = this.$('#main');
@@ -31,18 +25,20 @@
 
       this.listenTo(app.Chords, 'add', this.addOne);
       this.listenTo(app.Chords, 'reset', this.addAll);
-
       this.listenTo(app.Chords, 'all', this.render);
-
-      app.Notes.fetch();
       app.Chords.fetch();
-      app.Notes.reset();
-      
+
+      this.listenTo(app.Notes, 'add', this.addNote);
+      this.renderStaticNotes(22); 
+   
     },
 
+    addNote: function(note){
+      console.log(note);
+      var view = new app.NoteView({model:note});
+       $('#fretboard').append( view.render().el );
+    },
 
-    // Re-rendering the App just means refreshing the statistics -- the rest
-    // of the app doesn't change.
     render: function() {
       // console.log(this.name+".render");
       if ( app.Chords.length ) {
@@ -54,23 +50,15 @@
       }
     },
 
-    // Add a single chord item to the list by creating a view for it, and
-    // appending its element to the `<ul>`.
     addOne: function( chord ) {
-      // console.log(this.name+".addOne");
       var view = new app.ChordView({ model: chord });
       $('#chord-list').append( view.render().el );
     },
 
-    // Add all items in the **Todos** collection at once.
     addAll: function() {
-      // console.log(this.name+".addAll");
       this.$('#chord-list').html('');
       app.Chords.each(this.addOne, this);
-      //reset Notes Collection
-      //app.Notes.reset();
     },
-
 
     filterOne : function (chord) {
       todo.trigger('visible');
@@ -80,32 +68,41 @@
       app.Chords.each(this.filterOne, this);
     },
 
-    // Generate the attributes for a new Todo item.
-    createNewChord: function(collection) {
-      // console.log(this.name+".createNewChord");
-      var arr = [];
-      collection.each(function(item) {
-        var idx = parseInt(item.get('fret'),10) % 12;
-        //console.log(idx)     
-        arr.push(item.static_data[idx]);
-      });
-      //console.log(arr)
-      return arr;
-    }, 
-
-    // If you hit return in the main input field, create new **Todo** model,
-    // persisting it to *localStorage*.
     createOnsubmit: function( e ) {
-      // console.log(this.name+".¨createOnSubmit");
+
       var chordName = $('#chord-name').val();
       $('#chord-name').val('');
 
-      app.Chords.create( { name: chordName, data: this.createNewChord( app.Notes ) } );
+      var arr =[];
+      _.each(app.Notes.returnActive(), function(note){
+          var noteValue = note.get('noteValue');
+          //arr.push({noteValue: noteValue});
+          arr.push(noteValue);
+      });
+      app.Chords.create( { name: chordName, data: JSON.stringify(arr) } );
 
       app.Notes.each(function(item) {
           item.set("active", false)// instanceof app.Notes
       });
-      app.Notes.reset();
-      $('#static-notes').children().removeClass('debug-red');
+      $('.static-note-instance').removeClass('debug-red')
+
+    },
+
+    renderStaticNotes: function(fretboardSize){
+      this.drawGString( fretboardSize, {strValue:6, name:'e-string'}); //E-String
+      this.drawGString( fretboardSize, {strValue:5, name:'a-string'}); //A-String
+      this.drawGString( fretboardSize, {strValue:4, name:'d-string'});//D-STring
+      this.drawGString( fretboardSize, {strValue:3, name:'g-string'});//G-STring
+      this.drawGString( fretboardSize, {strValue:2, name:'b-string'});//B-STring
+      this.drawGString( fretboardSize, {strValue:1, name:'e-high-string'});//E-STring  
+    },
+
+    drawGString: function(fretboardSize, obj){
+
+        for(var i = 0; i < fretboardSize ; i++){
+            var note = new app.Note( {noteValue: this.static_data[i]} );
+            app.Notes.add(note);
+        }   
     }
+
   });
