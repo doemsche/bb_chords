@@ -23,7 +23,7 @@
     },
 
     initialize: function(){
-      // console.log(this.name+".init");
+      //console.log(this.name+".init");
     },
     remove: function(){
       // console.log(this.name+".remove");

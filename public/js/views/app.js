@@ -101,7 +101,6 @@
     },
 
     drawGString: function(fretboardSize, obj){
-        console.log(obj);
         for(var i = obj.offset; i < fretboardSize +obj.offset ; i++){
             var note = new app.Note( {noteValue: this.static_data[i], gString: obj.id} );
             app.Notes.add(note);

@@ -4,6 +4,10 @@
 	border:none;
 	width:800px;
 }
+
+#chordapp{
+	margin-bottom:20px;
+}
 .chord-list{
 	list-style:none;
 	margin-left:0;
@@ -71,7 +75,7 @@ ul#static-notes li{
 	float:left;
 	width:23px;
 	list-style:none;
-
+	cursor: pointer;
 }
 
 .static-note-instance > a {
@@ -86,6 +90,25 @@ ul#static-notes li{
 	border-radius: 8px;
 	height: 13px;
 	margin: 0 5px;
+}
+
+.chord-name{
+	margin: 2px 0 0 7px;
+	display: inline-block;
+}
+
+#chord-list{
+	overflow:hidden;
+	padding:10px;
+	background-color:#ccc;
+	margin-top:10px;
+	border-top: 2px solid #999;
+border-bottom: 1px solid #999;
+}
+
+.xx{
+	display:inline;
+	margin-left:3px;
 }
 
 

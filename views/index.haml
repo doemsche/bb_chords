@@ -15,13 +15,12 @@
 			%ul#e-string.gstring-ul
 		%div#chord-data
 		%button#submit-new-chord.btn.btn-inverse{"type" => "button"}submit
-	%footer#footer
-		%ul#chord-list.chord-list
-
 	%script#chord-template{"type" => "text/template"}
-		.chord <% _.each(JSON.parse(data), function(name){ %> <li><%= name.noteValue %> </li> <% }); %>	
+		.chord <% _.each(JSON.parse(data), function(name){ %> <div class="xx"><%= name.noteValue %> </div> <% }); %>	
+		%h6.chord-name <%= name %>
 	%script#note-template{"type" => "text/template"}
 		%a 
+
 
 
 
