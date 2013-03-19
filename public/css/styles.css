@@ -29,11 +29,6 @@
 	cursor:pointer;
 }
 
-.debug-red{
-	background-color:red;
-}
-
-
 #wrapper{
 	margin-left:10%;
 	width:100%;
@@ -56,36 +51,41 @@ ul#static-notes li{
 
 .gstring-ul{
 	padding:0;
-	margin: 0 0 0 0;
-
+	margin: 0 0 0 1px;
+	height:16px;
 }
-
-.static-note-instance a{
-	display:block;
-	text-align:center;
-	height:5px;
-
-}
-.static-note-instance{
-	list-style:none;
-	float:left;
-	width:10px;
-	border: 1px dotted #999;
-	cursor: pointer;
-	width:20px;
-	border:none;
-/*	border: 1px dotted red;
-*/}
 
 .hide-note-text{
 	display:none;
 }
 
 #fretboard{
-	overflow:hidden;
-	padding: 10px 0;
-	width:500px;
 	background: url('grid_bg.png') no-repeat;
-	height:50px;
+	width:510px;
+	overflow:hidden;
+	height:95px;
 }
+
+.static-note-instance{
+	height:16px;
+	float:left;
+	width:23px;
+	list-style:none;
+
+}
+
+.static-note-instance > a {
+	display: block;
+	position: relative;
+	height: 16px;
+	text-align: center;
+	line-height: 13px;
+}
+.static-note-instance > a.act{
+	background-color: red;
+	border-radius: 8px;
+	height: 13px;
+	margin: 0 5px;
+}
+
 

@@ -17,7 +17,7 @@
     },
 
     initialize: function() {
-      console.log(this.name+".init");
+      //console.log(this.name+".init");
       this.$name = this.$('#chord-name');
       this.$chordData = this.$('#chord-data');
       this.$main = this.$('#main');
@@ -34,9 +34,12 @@
     },
 
     addNote: function(note){
-      console.log(note);
       var view = new app.NoteView({model:note});
-       $('#fretboard').append( view.render().el );
+      console.log("here we get")
+      var guitarString = note.get('gString');
+      console.log(guitarString);
+      console.log(note.get('noteValue'));
+      $(guitarString).append( view.render().el );
     },
 
     render: function() {
@@ -76,31 +79,31 @@
       var arr =[];
       _.each(app.Notes.returnActive(), function(note){
           var noteValue = note.get('noteValue');
-          //arr.push({noteValue: noteValue});
-          arr.push(noteValue);
+          arr.push({noteValue: noteValue});
+          //arr.push(noteValue);
       });
       app.Chords.create( { name: chordName, data: JSON.stringify(arr) } );
 
       app.Notes.each(function(item) {
           item.set("active", false)// instanceof app.Notes
       });
-      $('.static-note-instance').removeClass('debug-red')
+      $('.static-note-instance').children().removeClass('act')
 
     },
 
     renderStaticNotes: function(fretboardSize){
-      this.drawGString( fretboardSize, {strValue:6, name:'e-string'}); //E-String
-      this.drawGString( fretboardSize, {strValue:5, name:'a-string'}); //A-String
-      this.drawGString( fretboardSize, {strValue:4, name:'d-string'});//D-STring
-      this.drawGString( fretboardSize, {strValue:3, name:'g-string'});//G-STring
-      this.drawGString( fretboardSize, {strValue:2, name:'b-string'});//B-STring
-      this.drawGString( fretboardSize, {strValue:1, name:'e-high-string'});//E-STring  
+      this.drawGString( fretboardSize, {strValue:6, id:'#e-string', offset: 0}); //E-String
+      this.drawGString( fretboardSize, {strValue:5, id:'#a-string', offset: 5}); //A-String
+      this.drawGString( fretboardSize, {strValue:4, id:'#d-string', offset: 10});//D-STring
+      this.drawGString( fretboardSize, {strValue:3, id:'#g-string', offset: 3});//G-STring
+      this.drawGString( fretboardSize, {strValue:2, id:'#b-string', offset: 7});//B-STring
+      this.drawGString( fretboardSize, {strValue:1, id:'#e-high-string', offset: 0});//E-STring  
     },
 
     drawGString: function(fretboardSize, obj){
-
-        for(var i = 0; i < fretboardSize ; i++){
-            var note = new app.Note( {noteValue: this.static_data[i]} );
+        console.log(obj);
+        for(var i = obj.offset; i < fretboardSize +obj.offset ; i++){
+            var note = new app.Note( {noteValue: this.static_data[i], gString: obj.id} );
             app.Notes.add(note);
         }   
     }

@@ -13,7 +13,8 @@
     tagName: 'li',
 
     // Cache the template function for a single item.
-    template: _.template( $('#chord-template').html() ),
+    //template: _.template( $('#chord-template').html() ),
+    //template: haml.compileHaml({sourceId: 'chord-template'}),
 
     // The DOM events specific to an item.
     events: {
@@ -30,8 +31,13 @@
 
     // Re-renders the titles of the todo item.
     render: function() {
-       //console.log( this.name+".render" );
-      this.$el.html( this.template( this.model.toJSON() ) );
+      //var name = JSON.parse(this.model.toJSON().name);
+      //var data = JSON.parse(this.model.toJSON().data);
+/*      _.each(data, function(){
+      });*/
+      //console.log(data[0].noteValue)
+     // this.$el.html( this.template( data[0].noteValue ) );
+      this.$el.html( _.template( $('#chord-template').html(), this.model.toJSON() ) );
       return this;
     }
 

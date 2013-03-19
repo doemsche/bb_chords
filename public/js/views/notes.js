@@ -13,34 +13,40 @@
 
     // The DOM events specific to an item.
     events: {
-      'click': 'highlight'
+      'click': 'highlight',
+      'mouseover': 'preview',
+      'mouseout' : 'postview'
     },
 
     initialize: function() {
-      //console.log(this.name+'.init');
-      //this.listenTo(this.model, 'change', this.render);
-
-      //this.listenTo(this.model, 'visible', this.toggleVisible);
+      
     },
 
     render: function() {
-      this.$el.html( this.template( this.model ));
+      this.$el.html( this.template( this.model.toJSON() ));
       this.$el.addClass('static-note-instance');
       return this;
     },
 
     highlight: function(){
       var status = this.model.get('active');
-      console.log(status);
       if(status){
         this.model.set('active', false);
-        this.$el.removeClass('debug-red');
+        this.$el.children(':first').removeClass('act');
       }
       else
       {
         this.model.set('active', true);
-        this.$el.addClass('debug-red')
+        this.$el.children(':first').removeAttr('style').addClass('act');
       }
+    },
+    preview: function(){
+      //console.log("prevei");
+       //this.$el.children(':first').filter(':not(:animated)').animate({ backgroundColor: '#4dd2ff'});
+       
+    },
+    postview: function(){
+     //this.$el.children(':first').filter(':not(:animated)').animate({ border: 'none'});
     }
 
   });
