@@ -29,6 +29,7 @@
     },
 
     highlight: function(){
+      console.log(this.model.get('fret'));
       var status = this.model.get('active');
       if(status){
         this.model.set('active', false);

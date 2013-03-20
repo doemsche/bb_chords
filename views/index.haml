@@ -1,6 +1,7 @@
 %section#chordapp
 	%header#header	
 	%div#debug.btn-group
+	-#
 		%button#reset-notes.btn Reset Notes
 		%button#ls-reset.btn Reset LocalStoare	
 	%section#main
@@ -16,10 +17,15 @@
 		%div#chord-data
 		%button#submit-new-chord.btn.btn-inverse{"type" => "button"}submit
 	%script#chord-template{"type" => "text/template"}
-		.chord <% _.each(JSON.parse(data), function(name){ %> <div class="xx"><%= name.noteValue %> </div> <% }); %>	
 		%h6.chord-name <%= name %>
+		.chord <% _.each(JSON.parse(data), function(note){ %> <div class="<%= note.gString %> f-<%= note.fret %>"></div><% }); %>	
+		%div.chord-delete
+		-#
+			<a href="/chord/<%= _id %>">dom</a>
 	%script#note-template{"type" => "text/template"}
 		%a 
+		-#
+			<%= noteValue %>
 
 
 

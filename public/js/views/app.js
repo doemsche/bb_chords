@@ -35,10 +35,7 @@
 
     addNote: function(note){
       var view = new app.NoteView({model:note});
-      console.log("here we get")
       var guitarString = note.get('gString');
-      console.log(guitarString);
-      console.log(note.get('noteValue'));
       $(guitarString).append( view.render().el );
     },
 
@@ -72,15 +69,15 @@
     },
 
     createOnsubmit: function( e ) {
-
       var chordName = $('#chord-name').val();
       $('#chord-name').val('');
 
       var arr =[];
       _.each(app.Notes.returnActive(), function(note){
           var noteValue = note.get('noteValue');
-          arr.push({noteValue: noteValue});
-          //arr.push(noteValue);
+          var fret = note.get('fret');
+          var gString = note.get('gString').substr(1);
+          arr.push({noteValue: noteValue, fret:fret, gString:gString});
       });
       app.Chords.create( { name: chordName, data: JSON.stringify(arr) } );
 
@@ -102,7 +99,7 @@
 
     drawGString: function(fretboardSize, obj){
         for(var i = obj.offset; i < fretboardSize +obj.offset ; i++){
-            var note = new app.Note( {noteValue: this.static_data[i], gString: obj.id} );
+            var note = new app.Note( {noteValue: this.static_data[i], gString: obj.id, fret: i-obj.offset} );
             app.Notes.add(note);
         }   
     }

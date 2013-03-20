@@ -103,12 +103,64 @@ ul#static-notes li{
 	background-color:#ccc;
 	margin-top:10px;
 	border-top: 2px solid #999;
-border-bottom: 1px solid #999;
+	border-bottom: 1px solid #999;
 }
 
-.xx{
-	display:inline;
-	margin-left:3px;
+.chord-delete{
+	background: url('delete.png') no-repeat;
+	width:20px;
+	height:20px;
+	margin:5px 0 0 48px;
 }
 
+
+.f-1, .f-2, .f-3, .f-4, .f-5{
+	width: 7px;
+	height: 7px;
+	background-color: red;
+	border-radius:8px;
+	position: relative;
+}
+.f-1{
+	margin-left:5px;
+}
+.f-2{
+	margin-left:19px;
+}
+
+.f-3{
+	margin-left:32px;
+}
+
+.f-3{
+	margin-left:47px;
+}
+
+.f-3{
+	margin-left:61px;
+}
+
+.a-string{
+	top:41px;
+}
+
+.e-string{
+	top:52px;
+}
+
+.d-string{
+	top:30px;
+}
+
+.g-string{
+	top:19px;
+}
+
+.b-string{
+	top:8px;
+}
+
+.e-high-string{
+	top:-3px;
+}
 

@@ -6,7 +6,6 @@ require 'json'
 
 DB = Mongo::Connection.new.db("mydb", :pool_size => 5, :timeout => 5)
 
-
 get '/' do
   haml :index, :attr_wrapper => '"', :locals => {:title => 'Guitar Chord App'}
 end
