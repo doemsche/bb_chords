@@ -18,8 +18,9 @@
 		%button#submit-new-chord.btn.btn-inverse{"type" => "button"}submit
 	%script#chord-template{"type" => "text/template"}
 		%h6.chord-name <%= name %>
-		.chord <% _.each(JSON.parse(data), function(note){ %> <div class="<%= note.gString %> f-<%= note.fret %>"></div><% }); %>	
 		%div.chord-delete
+		.chord <% _.each(JSON.parse(data), function(note){ %> <div class="<%= note.gString %> f-<%= note.fret %>"></div><% }); %>	
+
 		-#
 			<a href="/chord/<%= _id %>">dom</a>
 	%script#note-template{"type" => "text/template"}

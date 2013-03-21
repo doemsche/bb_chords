@@ -11,8 +11,6 @@
     name: 'View:Chord',
     //... is a list tag.
     tagName: 'li',
-
-
     events: {
       'click .chord-delete': 'clear'
     },
@@ -32,9 +30,17 @@
     },
 
     clear: function() {
+      var self = this;
+
+      this.$el.animate({opacity:0}, 300, function(){
+        self.execute();
+      });
       //if(confirm("Really delete this chord?")){this.model.destroy();} else {return false;}
-      this.model.destroy();
       
+    },
+
+    execute: function(){
+        this.model.destroy(); 
     }
 
   });

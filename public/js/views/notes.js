@@ -33,21 +33,27 @@
       var status = this.model.get('active');
       if(status){
         this.model.set('active', false);
-        this.$el.children(':first').removeClass('act');
+        this.$el.children(':first').removeAttr('style').removeClass('act');
       }
       else
       {
         this.model.set('active', true);
         this.$el.children(':first').removeAttr('style').addClass('act');
+        this.$el.children(':first').filter(':not(:animated)').animate(
+          {
+            backgroundColor: '#646464'
+          }, 200, 'linear'
+        );
       }
     },
     preview: function(){
       //console.log("prevei");
-       //this.$el.children(':first').filter(':not(:animated)').animate({ backgroundColor: '#4dd2ff'});
+       //this.$el.children(':first').filter(':not(:animated)').addClass('preview');
        
     },
     postview: function(){
-     //this.$el.children(':first').filter(':not(:animated)').animate({ border: 'none'});
+        //this.$el.children(':first').filter(':not(:animated)').removeClass('preview');
+        //this.$el.children(':first').filter(':not(:animated)').animate({ borderColor: '#EAF4FF'});
     }
 
   });

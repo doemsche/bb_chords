@@ -51,6 +51,7 @@ ul#static-notes li{
 	background: url('grid-small.png');
 	width: 72px;
 	height: 56px;
+	position:relative;
 }
 
 .gstring-ul{
@@ -81,12 +82,24 @@ ul#static-notes li{
 .static-note-instance > a {
 	display: block;
 	position: relative;
-	height: 16px;
+	height: 13px;
 	text-align: center;
 	line-height: 13px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	width:13px;
+	margin:0 5px;
 }
+
+.static-note-instance > a.preview{
+	//background-color: rgb(114, 114, 114);
+	width: 6px;
+	height: 6px;
+	margin: 3px 0 0 10px;
+}
+
 .static-note-instance > a.act{
-	background-color: red;
+	background-color: #eeeeee;
 	border-radius: 8px;
 	height: 13px;
 	margin: 0 5px;
@@ -95,6 +108,7 @@ ul#static-notes li{
 .chord-name{
 	margin: 2px 0 0 7px;
 	display: inline-block;
+	float: left;
 }
 
 #chord-list{
@@ -108,18 +122,20 @@ ul#static-notes li{
 
 .chord-delete{
 	background: url('delete.png') no-repeat;
-	width:20px;
 	height:20px;
-	margin:5px 0 0 48px;
+	margin-left:60px;
+}
+.chord-delete:hover{
+	background: url('delete_h.png') no-repeat;
 }
 
 
 .f-1, .f-2, .f-3, .f-4, .f-5{
 	width: 7px;
 	height: 7px;
-	background-color: red;
+	background-color: #646464;
 	border-radius:8px;
-	position: relative;
+	position: absolute;
 }
 .f-1{
 	margin-left:5px;
@@ -132,11 +148,11 @@ ul#static-notes li{
 	margin-left:32px;
 }
 
-.f-3{
+.f-4{
 	margin-left:47px;
 }
 
-.f-3{
+.f-5{
 	margin-left:61px;
 }
 

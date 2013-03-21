@@ -84,7 +84,7 @@
       app.Notes.each(function(item) {
           item.set("active", false)// instanceof app.Notes
       });
-      $('.static-note-instance').children().removeClass('act')
+      $('.static-note-instance').children().removeAttr('style').removeClass('act')
 
     },
 
